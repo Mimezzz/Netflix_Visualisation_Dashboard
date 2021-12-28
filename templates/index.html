@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Netflix</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+header {
+  opacity: 1!important;
+  
+  padding-bottom: 40px !important;
+  }
+
+text:hover { opacity: 0.8!important; 
+}
+
+body{
+  background-image: url('https://sm.pcmag.com/t/pcmag_au/review/n/netflix/netflix_s7x1.3840.jpg');
+  background-attachment:fixed;
+  background-position: center;
+  background-blend-mode: darken;
+  font-size: 25px;
+  /* background-color: black;} */}
+
+h1 {
+  font-family: "Raleway", Arial, sans-serif;
+  color:white;
+}
+
+.row {
+  padding-left: 60px;
+ padding-right: 60px;
+}
+
+h5 {
+  color: white;
+}
+
+.w3-xlarge {
+  color:antiquewhite;
+  font-size: 40px !important;
+}
+
+.w3-bar {
+  color:white;
+}
+
+.w3-border {
+  border: 0px !important;;
+}
+
+
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+
+.year{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+}
+
+.genre {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+}
+
+.wordcloud {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+
+}
+
+#wordcloudchart 
+{  display: flex;   justify-content: center; }
+
+.recommendation {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 40px;
+};
+
+h1 {
+  color: white !important;
+}
+
+.recommended-movies {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+  background-color: white;
+  opacity: 0.9;
+}
+
+img{
+  width:300px;
+  height:450px;
+}
+
+#filterimg {
+  width:1360px;
+  height: 200px!important;
+}
+
+h5 {
+  color: white!important;
+  font-size: 14px!important;
+}
+
+@media(max-width:800px){
+  .navbar-custom {
+      background-color:#39A388;    
+  };
+};
+
+</style>
+</head>
+
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="container" style="max-width:1500px">
+  <div class='row'>
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+  <h1 class="w3-xlarge">Netflix Visualisation Project</h1>
+  <h1>Dashboard</h1>
+  </div>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+</header>
+
+<!-- plot grids -->
+<div class='row'>
+  <div class='col-md-12 text-center'>
+    <h5>Netflix Movie Count by Country</h5>
+    <br>
+
+    <div id='plot2'>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="row">
+
+  <div class="col-md-12 ">
+    <div class='year'>
+      <h5 style="position:relative; left: 30%">Netflix movies/ tv shows contribution by release year</h5>
+      <div id='chart2'>
+        
+      </div>
+      <hr>
+      <h5 style="position:relative; left: 31%">Netflix most popular movies/ tv shows genre by release year</h5>
+      <p style="color:white; position:relative; left: 30%">Note: In earlier years, there were not too many movies/ tv shows </p>
+      <form>
+        <label for="year" style="color:white;">Please select a year: </label>
+      </form>
+      <div id='chartForBar'>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+<div class='row'>
+
+  <div class="col-md-12 text-center">
+    <div class="wordcloud">
+      <h5>Netflix movie wordcloud</h5>
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button id='btn30' type="button" class="btn btn-danger" >Top 30 Keywords</button>
+        <button id='btn50' type="button" class="btn btn-warning">Top 50 Keywords</button>
+        <button id='btn100' type="button" class="btn btn-success">Top 100 Keywords</button>
+      </div>
+      <div id='wordcloudchart'></div>
+      
+    </div>
+  </div> 
+
+</div>
+
+
+<div class='row'>
+  <div class="col-md-12 text-center">
+    <div class='recommendation'>
+      <h5>Movie recommendations by wordcloud keywords</h5>
+      <div class='display'></div>
+<div class='row'>
+    <div  id='image'></div>
+  </div> 
+    </div>
+    </div>
+      
+  </div>
+ 
+</div>
+
+<div class="col-md-12 text-center">
+  <div class='genre'>
+    <h5 style="font-size:50px;"style="color:yellow;">Netflix Movie Database Filter</h5>
+  </br>  
+      <a href= "filterindex.html">
+       
+      <img id='filterimg' border="0" src="../static/images/filter.png" width="1200" height="50">
+    </a>
+    
+    <div id='chart2'>
+
+    </div>
+  </div>
+  
+</div>
+
+
+<!-- <script src="{{ url_for('static', filename='js/lib/d3/d3.js')}}"></script>  -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+  <script type="text/javascript" src="/static/js/31new.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/lib/d3/d3.layout.cloud.js')}}"></script> -->
+  <script src="{{ url_for('static', filename='js/lib/d3/d3.wordcloud.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/mimeapp.js') }}"></script>
+  <script src=https://code.jquery.com/jquery-3.1.1.min.js></script>
+
+  
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script> -->
+  <!-- <script type="text/python" src="/netflix_app.py"></script> -->
+  <script type="text/javascript" src="/static/js/netflixapp2.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+
+
+  
+<!-- End Page Content -->
+
+
+<!-- Footer -->
+
+
+
+
+  <!-- <script src="assets/js/lib/d3/d3.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script> -->
+  <!-- <script src="assets/js/lib/d3/d3.layout.cloud.js"></script>
+  <script src="assets/js/lib/d3/d3.wordcloud.js"></script>
+  <script type="text/javascript" src='assets/js/mime.js'></script>  -->
+
+</body>
+</html>
